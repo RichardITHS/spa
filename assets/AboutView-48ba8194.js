@@ -1,0 +1,1 @@
+import{o as e,c as a,a as o,b as s,H as t}from"./index-1fe13c54.js";const c={class:"about"},r=s("h1",null,"This is an about page",-1),l={__name:"AboutView",setup(_){return(n,i)=>(e(),a("div",c,[o(t),r]))}};export{l as default};
