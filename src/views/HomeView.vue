@@ -1,19 +1,19 @@
 <!-- Denna del av koden använder 'script setup' för att importera komponenter och använda Composition API -->
 <script setup>
     // Importerar komponenten HeroImage.vue
-    import HeroImage from '../components/HeroImage.vue'
+    import HeroImage from '../components/HeroImage.vue';
 
     // Importerar komponenten SpaOffers.vue
-    import SpaOffers from '../components/SpaOffers.vue'
+    import SpaOffers from '../components/SpaOffers.vue';
 
     // Importerar 'ref' från Vue's Composition API för att använda reactive data
-    import { ref } from 'vue'
+    import { ref } from 'vue';
 
     // Importerar komponenten MailForm.vue
-    import MailForm from '../components/MailForm.vue'
+    import MailForm from '../components/MailForm.vue';
 
     // Skapar en ref-variabel 'show' som är initialt satt till 'true'
-    const show = ref(true)
+    const show = ref(true);
 </script>
 
 <!-- Denna del av koden utgör HTML-mallen -->
@@ -53,25 +53,25 @@
         // Data-funktion som returnerar initiala data för komponenten
         data() {
             return {
-                spas: [],      // En tom lista för spa-erbjudanden
-                message: 'Vilket paket önskas?'  // Ett initialt meddelande
-            }
+                spas: [], // En tom lista för spa-erbjudanden
+                message: 'Vilket paket önskas?' // Ett initialt meddelande
+            };
         },
-        name: 'HomeView',  // Namn på komponenten
-        components: { 'spa-offer': SpaOffers },  // Användning av SpaOffers-komponenten
-        mounted() {
+        name: 'HomeView', // Namn på komponenten
+        components: { 'spa-offer': SpaOffers }, // Användning av SpaOffers-komponenten
+        created() {
             // Efter att komponenten har monterats, hämta data från spa.json-filen
-            this.fetchData()
+            this.fetchData();
         },
         methods: {
             // En metod för att hämta spa-data från en json-fil asynkront
             async fetchData() {
-                const res = await fetch('spa.json')
-                const val = await res.json()
-                this.spas = val  // Sätter data från filen till 'spas'-listan
+                const res = await fetch('spa.json/');
+                const val = await res.json();
+                this.spas = val; // Sätter data från filen till 'spas'-listan
             }
         }
-    }
+    };
 </script>
 
 <!-- Denna del av koden är för stilmallar som gäller endast för den här komponenten -->
@@ -93,3 +93,27 @@
         margin-bottom: 20vh;
     }
 </style>
+<!-- Ang metoden att ange name, och "component spa-offers" -->
+<!--
+
+I Vue.js används name-egenskapen för att ge komponenten ett namn.
+Namnet kan vara användbart för debugging och identifiering av komponenten.
+I det här fallet är komponentens namn satt till 'HomeView'. Detta kan vara användbart
+när du tittar på Vue DevTools eller när du arbetar med komponenter i en större
+Vue.js-applikation.
+
+Därefter har vi components-egenskapen, där en komponent med namnet 'spa-offer'
+associeras med den faktiska komponenten SpaOffers. Detta skapar en parentes där namnet
+
+('spa-offer') är komponentens tag-namn och SpaOffers är den faktiska komponenten som
+används. Detta gör det möjligt att använda 'spa-offer' som ett anpassat HTML-element
+i mallen för den aktuella komponenten.
+
+Så, om du skulle använda 'spa-offer' i din template för komponenten HomeView,
+skulle det tolkas som att använda den SpaOffers-komponenten i det här fallet.
+Detta kan vara användbart för att organisera och använda komponenter inom en större
+Vue-applikation. Det ger en klar och modulär struktur till koden.
+
+Tips:
+https://www.youtube.com/watch?v=jIB1bE57JQg&t=158s
+ -->

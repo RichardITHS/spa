@@ -26,7 +26,7 @@
                 </p>
 
                 <!-- En länk (a) som leder till sidan /spa/about och har en primär knappstil -->
-                <a href="/spa/about" class="btn btn-primary">Läs mer här</a>
+                <a :href="'/spa/' + offer.id" class="btn btn-primary">Läs mer här</a>
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                 type: Object
             }
         }
-    }
+    };
 </script>
 
 <!-- Denna del av koden är för stilmallar som gäller endast för den här komponenten -->
